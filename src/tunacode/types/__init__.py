@@ -86,7 +86,7 @@ from tunacode.types.dataclasses import (
     TokenUsage,
 )
 
-# Pydantic-AI wrappers
+# Pydantic-AI wrappers (being phased out - prefer canonical types)
 from tunacode.types.pydantic_ai import (
     AgentResponse,
     AgentRun,
@@ -94,9 +94,30 @@ from tunacode.types.pydantic_ai import (
     MessagePart,
     ModelRequest,
     ModelResponse,
-    NormalizedUsage,
     PydanticAgent,
+)
+
+# Streaming types (provider-agnostic)
+from tunacode.types.streaming import (
+    MessageEnd,
+    MessageStart,
+    StreamError,
+    StreamEvent,
+    StreamEventKind,
+    TextDelta,
+    ThoughtDelta,
+    ToolCallDelta,
+    ToolCallEnd,
+    ToolCallStart,
+    is_content_delta,
+    is_tool_event,
+)
+
+# Usage types (provider-agnostic)
+from tunacode.types.usage import (
+    NormalizedUsage,
     normalize_request_usage,
+    usage_from_dict,
 )
 
 __all__ = [
@@ -132,16 +153,31 @@ __all__ = [
     "UserConfig",
     "ValidationResult",
     "Validator",
-    # Pydantic-AI
+    # Pydantic-AI (being phased out)
     "AgentResponse",
     "AgentRun",
     "MessageHistory",
     "MessagePart",
     "ModelRequest",
     "ModelResponse",
-    "NormalizedUsage",
     "PydanticAgent",
+    # Usage types (provider-agnostic)
+    "NormalizedUsage",
     "normalize_request_usage",
+    "usage_from_dict",
+    # Streaming types (provider-agnostic)
+    "MessageEnd",
+    "MessageStart",
+    "StreamError",
+    "StreamEvent",
+    "StreamEventKind",
+    "TextDelta",
+    "ThoughtDelta",
+    "ToolCallDelta",
+    "ToolCallEnd",
+    "ToolCallStart",
+    "is_content_delta",
+    "is_tool_event",
     # Callbacks
     "AsyncFunc",
     "AsyncToolFunc",
@@ -159,7 +195,7 @@ __all__ = [
     "ModelPricing",
     "ModelRegistry",
     "TokenUsage",
-    # Canonical types (new)
+    # Canonical types
     "CanonicalMessage",
     "CanonicalPart",
     "CanonicalToolCall",
